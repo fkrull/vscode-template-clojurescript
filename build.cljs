@@ -2,5 +2,6 @@
 
 (build/build "src"
     {:output-to "out/main.js"
-     :optimizations :simple
+     :optimizations :none
+     :process-shim false
      :target :nodejs})
