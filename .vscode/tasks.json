@@ -69,7 +69,7 @@
                             "file": 1
                         },
                         {
-                            "regexp": "^(WARNING): (.*) at line (\\d+)$",
+                            "regexp": "^(WARNING): (.*) at line (\\d+).*$",
                             "severity": 1,
                             "message": 2,
                             "line": 3,
@@ -77,6 +77,21 @@
                             "loop": true
                         }
                     ]
+                },
+                {
+                    "owner": "clojurescript",
+                    "fileLocation": [
+                        "relative",
+                        "${workspaceFolder}"
+                    ],
+                    "pattern": {
+                        "regexp": "^Failed! Could not compile ([\\w.]+): (Error): (.*)$",
+                        "file": 1,
+                        "severity": 2,
+                        "message": 3,
+                        "line": 0,
+                        "column": 0
+                    }
                 }
             ]
         }
