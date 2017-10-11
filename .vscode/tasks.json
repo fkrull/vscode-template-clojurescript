@@ -12,11 +12,73 @@
             },
             "identifier": "npm-compile",
             "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
-            }
+                "reveal": "silent"
+            },
+            "problemMatcher": [
+                {
+                    "owner": "clojurescript",
+                    "fileLocation": [
+                        "relative",
+                        "${workspaceFolder}"
+                    ],
+                    "pattern": [
+                        {
+                            "regexp": "^Compiling (.*)$",
+                            "file": 1
+                        },
+                        {
+                            "regexp": "^(Failed![^:]*: (Error): [\\w.]+ \\[line (\\d+), col (\\d+)\\] (.*))?$",
+                            "severity": 2,
+                            "line": 3,
+                            "column": 4,
+                            "message": 5,
+                            "loop": true
+                        }
+                    ]
+                },
+                {
+                    "owner": "clojurescript",
+                    "fileLocation": [
+                        "relative",
+                        "${workspaceFolder}"
+                    ],
+                    "pattern": [
+                        {
+                            "regexp": "^Compiling (.*)$",
+                            "file": 1
+                        },
+                        {
+                            "regexp": "^(Failed![^:]*: (Error): (.*?)) at line (\\d+)?$",
+                            "severity": 2,
+                            "message": 3,
+                            "line": 4,
+                            "column": 0,
+                            "loop": true
+                        }
+                    ]
+                },
+                {
+                    "owner": "clojurescript",
+                    "fileLocation": [
+                        "relative",
+                        "${workspaceFolder}"
+                    ],
+                    "pattern": [
+                        {
+                            "regexp": "^Compiling (.*)$",
+                            "file": 1
+                        },
+                        {
+                            "regexp": "^(WARNING): (.*) at line (\\d+)$",
+                            "severity": 1,
+                            "message": 2,
+                            "line": 3,
+                            "column": 0,
+                            "loop": true
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
