@@ -1,0 +1,13 @@
+{
+    "name": "vscode-extension-clojurescript",
+    "version": "0.0.1",
+    "publisher": "fkrull",
+    "engines": {
+        "vscode": "^1.16.0"
+    },
+
+    "devDependencies": {
+        "lumo-cljs": "^1.8.0-beta",
+        "vscode": "^1.1.5"
+    }
+}
