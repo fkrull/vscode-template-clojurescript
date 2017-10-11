@@ -4,4 +4,5 @@
     {:output-to "out/main.js"
      :optimizations :none
      :process-shim false
+     :verbose true
      :target :nodejs})
