@@ -5,7 +5,10 @@
     "engines": {
         "vscode": "^1.16.0"
     },
-
+    "main": "./extension",
+    "activationEvents": [
+        "*"
+    ],
     "devDependencies": {
         "lumo-cljs": "^1.8.0-beta",
         "vscode": "^1.1.5"
