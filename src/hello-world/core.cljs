@@ -1,15 +1,16 @@
 (ns hello-world.core
-    (:require [cljs.nodejs :as nodejs]))
-(def vscode (js/require "vscode"))
+    (:require [cljs.nodejs :as nodejs]
+              [vscode.window]
+              [vscode.commands]))
 
 (defn hello-world []
-    (.showInformationMessage (.-window vscode) "Hello ClojureScript!"))
+    (vscode.window/showInformationMessage "Hello ClojureScript!"))
 
 (defn ^:export activate [context]
     (nodejs/enable-util-print!)
     (println "Hello from your ClojureScript extension!")
     (.push (.-subscriptions context)
-        (.registerCommand (.-commands vscode) "hellocljs.helloWorld" hello-world)))
+        (vscode.commands/registerCommand "hellocljs.helloWorld" hello-world)))
 
 (defn ^:export deactivate []
     (println "Goodbye from your ClojureScript extension."))
