@@ -7,8 +7,15 @@
     },
     "main": "./extension",
     "activationEvents": [
-        "*"
+        "onCommand:hellocljs.helloWorld"
     ],
+    "contributes": {
+        "commands": [{
+            "command": "hellocljs.helloWorld",
+            "title": "Hello World",
+            "category": "Hello ClojureScript"
+        }]
+    },
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "lumo -c src build.cljs"
