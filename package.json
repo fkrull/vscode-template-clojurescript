@@ -10,6 +10,7 @@
         "*"
     ],
     "scripts": {
+        "vscode:prepublish": "npm run compile",
         "compile": "lumo -c src build.cljs"
     },
     "devDependencies": {

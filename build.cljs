@@ -5,4 +5,5 @@
      :optimizations :none
      :process-shim false
      :verbose true
+     :hashbang false
      :target :nodejs})
