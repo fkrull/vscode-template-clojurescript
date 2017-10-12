@@ -5,12 +5,13 @@
     "tasks": [
         {
             "type": "npm",
-            "script": "compile",
+            "script": "watch",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "identifier": "npm-compile",
+            "isBackground": true,
+            "identifier": "npm-watch",
             "presentation": {
                 "reveal": "silent"
             },
@@ -21,20 +22,19 @@
                         "relative",
                         "${workspaceFolder}"
                     ],
-                    "pattern": [
-                        {
-                            "regexp": "^Compiling (.*)$",
-                            "file": 1
-                        },
-                        {
-                            "regexp": "^(Failed![^:]*: (Error): [\\w.]+ \\[line (\\d+), col (\\d+)\\] (.*))?$",
-                            "severity": 2,
-                            "line": 3,
-                            "column": 4,
-                            "message": 5,
-                            "loop": true
-                        }
-                    ]
+                    "pattern": {
+                        "regexp": "^(warning|error):\\s*([^[]*)\\[(\\d*),(\\d*)\\]:\\s*(.*)$",
+                        "severity": 1,
+                        "file": 2,
+                        "line": 3,
+                        "column": 4,
+                        "message": 5
+                    },
+                    "background":{
+                        "activeOnStart": false,
+                        "beginsPattern": "^\\[nodemon\\] starting.*$",
+                        "endsPattern": "^\\[nodemon\\] (clean exit)|(app crashed).*$"
+                    }
                 },
                 {
                     "owner": "clojurescript",
@@ -48,28 +48,10 @@
                             "file": 1
                         },
                         {
-                            "regexp": "^(Failed![^:]*: (Error): (.*?)) at line (\\d+)?$",
-                            "severity": 2,
-                            "message": 3,
-                            "line": 4,
-                            "column": 0,
-                            "loop": true
-                        }
-                    ]
-                },
-                {
-                    "owner": "clojurescript",
-                    "fileLocation": [
-                        "relative",
-                        "${workspaceFolder}"
-                    ],
-                    "pattern": [
-                        {
-                            "regexp": "^Compiling (.*)$",
-                            "file": 1
+                            "regexp": "^"
                         },
                         {
-                            "regexp": "^(WARNING): (.*) at line (\\d+).*$",
+                            "regexp": "^Reading analysis cache for|(WARNING): (.*) at line (\\d+)",
                             "severity": 1,
                             "message": 2,
                             "line": 3,
@@ -77,21 +59,6 @@
                             "loop": true
                         }
                     ]
-                },
-                {
-                    "owner": "clojurescript",
-                    "fileLocation": [
-                        "relative",
-                        "${workspaceFolder}"
-                    ],
-                    "pattern": {
-                        "regexp": "^Failed! Could not compile ([\\w.]+): (Error): (.*)$",
-                        "file": 1,
-                        "severity": 2,
-                        "message": 3,
-                        "line": 0,
-                        "column": 0
-                    }
                 }
             ]
         }
