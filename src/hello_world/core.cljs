@@ -1,10 +1,11 @@
 (ns hello-world.core
     (:require [cljs.nodejs :as nodejs]
               [vscode.window]
-              [vscode.commands]))
+              [vscode.commands]
+              [hello-world.greeting :refer [greeting]]))
 
 (defn hello-world []
-    (vscode.window/showInformationMessage "Hello ClojureScript!"))
+    (vscode.window/showInformationMessage (greeting)))
 
 (defn ^:export activate [context]
     (nodejs/enable-util-print!)

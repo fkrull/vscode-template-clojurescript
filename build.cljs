@@ -14,7 +14,9 @@
     ([error]
      (let [file (:file (.-data error))
            cause (.-cause (.-cause error))]
-        (format-error-message file cause)))
+        (if (nil? cause)
+            (format-error-message file error)
+            (format-error-message file cause))))
     ([file cause]
      (let [message (.-message cause)
            { :keys [line col] } (.-data cause)]
@@ -22,7 +24,7 @@
 
 (try
     (build/build
-        (build/inputs "lib" "src")
+        (build/inputs "lib" "src" "test")
         {:output-to "out/main.js"
             :optimizations :none
             :process-shim false
